@@ -1,0 +1,69 @@
+plugins {
+    id 'com.android.library'
+}
+apply plugin: 'maven'
+uploadArchives{
+    repositories.mavenDeployer{
+        // 配置本地仓库路径，项目根目录下的repository目录中
+        repository(url: uri('../repository'))
+        pom.groupId = "com.gaojihealth.android"// 唯一标识（通常为模块包名，也可以任意）
+        pom.artifactId = "MPChartLib" // 项目名称（通常为类库模块名称，也可以任意）
+        pom.version = "0.0.1" // 版本号
+    }
+}
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
+    // resourcePrefix 'mpcht'
+    defaultConfig {
+        //noinspection MinSdkTooLow
+        minSdkVersion 9
+        targetSdkVersion 27
+        versionCode 3
+        versionName '3.0.3'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+        ignoreWarnings true
+    }
+}
+
+/*repositories {
+    maven {
+        url 'http://oss.jfrog.org/artifactory/oss-snapshot-local'
+    }
+}*/
+allprojects {
+    tasks.withType(Javadoc) {//兼容中文字符
+        options.addStringOption('Xdoclint:none', '-quiet') //忽略javadoc错误
+        options{
+            encoding "UTF-8"
+            charSet 'UTF-8'
+            links "http://docs.oracle.com/javase/7/docs/api"
+        }
+    }
+}
+dependencies {
+    //provided 'io.realm:realm-android:0.87.5' // "optional" dependency to realm-database API
+    implementation 'com.android.support:support-annotations:27.1.1'
+}
+
+
+
+/*
+publish {
+    userOrg = 'kuncho'//bintray.com用户名
+    groupId = 'com.kun'//jcenter上的路径
+    artifactId = 'MPChartLib'//项目名称
+    publishVersion = '1.0.6'//版本号
+    desc = '修改chart，横坐标可以换行，最多支持三行。'//描述，不重要
+    website = 'https://github.com/KunCho/MPAndroidChart'//网站，最好有，不重要
+}*/
