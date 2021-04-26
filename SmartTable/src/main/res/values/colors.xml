@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="smart_transparent">#00000000</color>
+    <color name="smart_home_color">#FA6469</color>
+    <color name="smart_color_ffffff">#ffffff</color>
+    <color name="smart_color_FB8C54">#FB8C54</color>
+    <color name="smart_color_DDB674">#DDB674</color>
+    <color name="smart_color_1990FF">#1990FF</color>
+    <color name="smart_color_333333">#333333</color>
+    <color name="smart_color_ccffffff">#ccffffff</color>
+    <color name="smart_color_ccf8f8f8">#ccf8f8f8</color>
+</resources>

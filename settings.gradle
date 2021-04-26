@@ -1,0 +1,3 @@
+include ':SmartTable'
+include ':app'
+rootProject.name = "android"
